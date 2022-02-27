@@ -9,4 +9,4 @@ cd rduffylab3
 # Install dependencies
 npm install
 # Start with pm2
-pm2 start /bin/www --name example_app
+pm2 start ./bin/www --name example_app
