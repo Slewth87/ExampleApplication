@@ -8,5 +8,7 @@ pm2 stop example_app
 cd rduffylab3
 # Install dependencies
 npm install
+echo $PRIVATE_KEY > privatekey.pem
+echo $SERVER > server.crt
 # Start with pm2
 pm2 start ./bin/www --name example_app
