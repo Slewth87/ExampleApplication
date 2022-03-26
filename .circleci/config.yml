@@ -50,13 +50,13 @@ jobs:
           command: echo $SERVER > server.crt && echo $PRIVATE_KEY > privatekey.pem
       - run:
           name: build-docker-image-for-integration-environment
-          command: docker create -p 2814:2814 --name integration_app $IMAGE_NAME
+          command: docker create -p 2814:2814 --name $CONTAINER_NAME $IMAGE_NAME
       - run:
           name: copy-server-cert-and-private-key-across
-          command: docker cp ./privatekey.pem integration_app:/privatekey.pem;docker cp ./server.crt integration_app:/server.crt
+          command: docker cp ./privatekey.pem $CONTAINER_NAME:/privatekey.pem;docker cp ./server.crt $CONTAINER_NAME:/server.crt
       - run:
           name: start-docker-container
-          command: docker start integration_app
+          command: docker start $CONTAINER_NAME
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
