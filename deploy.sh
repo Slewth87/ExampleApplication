@@ -7,7 +7,7 @@ if [ "$CURRENT_INSTANCE" ]
 then
     docker rm $(docker stop $CURRENT_INSTANCE)
 fi
-echo $CONTAINER_NAME
+
 # Grab the instance from docker hub
 docker pull $IMAGE_NAME
 
