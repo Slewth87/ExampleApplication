@@ -11,25 +11,25 @@ fi
 # Grab the instance from docker hub
 docker pull $IMAGE_NAME
 
-# Check for a container named node_app, and remove it if it's there
-CONTAINER_EXISTS=$(docker ps -a | grep node_app)
+# Check for a container named $CONTAINER_NAME, and remove it if it's there
+CONTAINER_EXISTS=$(docker ps -a | grep $CONTAINER_NAME)
 if [ "$CONTAINER_EXISTS" ]
 then
-    docker rm node_app
+    docker rm $CONTAINER_NAME
 fi
 
-# Create a new node_app on port 2814
-docker create -p 2814:2814 --name node_app $IMAGE_NAME
+# Create a new $CONTAINER_NAME on port 2814
+docker create -p 2814:2814 --name $CONTAINER_NAME $IMAGE_NAME
 # Write the keys and certs
 echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
 
 # Put the keys and certs in the docker container
-docker cp ./privatekey.pem node_app:/privatekey.pem
-docker cp ./server.crt node_app:/server.crt
+docker cp ./privatekey.pem $CONTAINER_NAME:/privatekey.pem
+docker cp ./server.crt $CONTAINER_NAME:/server.crt
 
 # Start 'er up
-docker start node_app
+docker start $CONTAINER_NAME
 
 
 # Old deploy script:
