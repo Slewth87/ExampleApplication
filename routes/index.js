@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload')
   res.set('Cache-Control', 'no-cache, no-store, must-revalidate')
   res.set('Content-Security-Policy', "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'")
-  res.redirect("/math")
+  res.redirect("/reverser")
 });
 
 module.exports = router;

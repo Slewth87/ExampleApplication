@@ -1,17 +1,5 @@
-function add(num1, num2) {
-    return num1 + num2
+function flip(word1, word2) {
+    return word2 + " " + word1
 }
 
-function divide(num1, num2) {
-    return num1 / num2
-}
-
-function multiply(num1, num2) {
-    return num1 * num2
-}
-
-function subtract(num1, num2) {
-    return num1 - num2
-}
-
-module.exports = {add, subtract, multiply, divide}
+module.exports = {flip}

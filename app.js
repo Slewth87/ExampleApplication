@@ -6,7 +6,7 @@ var logger = require('morgan');
 var csrf = require('csurf');
 
 var indexRouter = require('./routes/index');
-var mathRouter = require('./routes/math');
+var flipRouter = require('./routes/flip');
 var app = express();
 var csrfProtection = csrf({ cookie: true })
 
@@ -41,7 +41,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRouter);
-app.use('/math', mathRouter);
+app.use('/flip', flipRouter);
 
 // error handler
 app.use(function(err, req, res, next) {
